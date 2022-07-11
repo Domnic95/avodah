@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "895071731108",
+    "firebase_url": "https://southwind-app.firebaseio.com",
+    "project_id": "southwind-app",
+    "storage_bucket": "southwind-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895071731108:android:353c3072953d1f93f75531",
+        "android_client_info": {
+          "package_name": "com.root.southwind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895071731108-i5c9vh16648cu5pui255pkvv5a09ek4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.root.southwind",
+            "certificate_hash": "089620e5600cfd127a10ce4ff8c46496e70c3e9d"
+          }
+        },
+        {
+          "client_id": "895071731108-pul4l01jtjhk764cjrp17mha3pamcile.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.root.southwind",
+            "certificate_hash": "f1418a79c89171365bde774cc09ac0a76e56a42a"
+          }
+        },
+        {
+          "client_id": "895071731108-7v3nc9l7qk4or4pb0jkr6h5jbmqbi6ps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoFBw0-OJctePXAU1R3MOZ8l8fyNzhr5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895071731108-7v3nc9l7qk4or4pb0jkr6h5jbmqbi6ps.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "895071731108-3rk6s4a80342trbq4b917v5ko9gq0lit.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.root.southwind"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

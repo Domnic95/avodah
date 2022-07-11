@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/392141820/android.advance_pdf_viewer.iml" filepath="$PROJECT_DIR$/.idea/modules/392141820/android.advance_pdf_viewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/57049863/android.device_info_plus.iml" filepath="$PROJECT_DIR$/.idea/modules/57049863/android.device_info_plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-82654484/android.firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/-82654484/android.firebase_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-234669224/android.firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/-234669224/android.firebase_messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/444779954/android.flutter_app_badger.iml" filepath="$PROJECT_DIR$/.idea/modules/444779954/android.flutter_app_badger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1448080693/android.flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/1448080693/android.flutter_plugin_android_lifecycle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1871084807/android.fluttertoast.iml" filepath="$PROJECT_DIR$/.idea/modules/-1871084807/android.fluttertoast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2051114900/android.geocoder.iml" filepath="$PROJECT_DIR$/.idea/modules/2051114900/android.geocoder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/613793522/android.geocoding.iml" filepath="$PROJECT_DIR$/.idea/modules/613793522/android.geocoding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1056568066/android.geolocator_android.iml" filepath="$PROJECT_DIR$/.idea/modules/-1056568066/android.geolocator_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2035264544/android.image_picker_android.iml" filepath="$PROJECT_DIR$/.idea/modules/2035264544/android.image_picker_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1358359591/android.location.iml" filepath="$PROJECT_DIR$/.idea/modules/-1358359591/android.location.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1535773942/android.package_info_plus.iml" filepath="$PROJECT_DIR$/.idea/modules/-1535773942/android.package_info_plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/656287459/android.path_provider_android.iml" filepath="$PROJECT_DIR$/.idea/modules/656287459/android.path_provider_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-227673661/android.shared_preferences_android.iml" filepath="$PROJECT_DIR$/.idea/modules/-227673661/android.shared_preferences_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-203945813/android.sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-203945813/android.sqflite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/841734449/android.url_launcher_android.iml" filepath="$PROJECT_DIR$/.idea/modules/841734449/android.url_launcher_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1923938169/android.video_player_android.iml" filepath="$PROJECT_DIR$/.idea/modules/1923938169/android.video_player_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1030092218/android.webview_flutter_android.iml" filepath="$PROJECT_DIR$/.idea/modules/-1030092218/android.webview_flutter_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/652042248/com.pichillilorenzo.flutter_inappwebview.android.flutter_inappwebview.iml" filepath="$PROJECT_DIR$/.idea/modules/652042248/com.pichillilorenzo.flutter_inappwebview.android.flutter_inappwebview.iml" />
+    </modules>
+  </component>
+</project>
