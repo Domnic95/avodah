@@ -144,6 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
               selectedIndex: selectedIndex,
               onSelectTab: (index) {
                 setState(() {
+                  print(">>>>$index");
                   selectedIndex = index;
                 });
                 widget.onindexChange(index);
@@ -181,13 +182,13 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (selectedIndex) {
       case 0:
         return NewsScreen();
+      // case 1:
+      //   return Schedule();
       case 1:
-        return Schedule();
-      case 2:
         return CareerTab();
-      case 3:
+      case 2:
         return AllChatList();
-      case 4:
+      case 3:
         return Profile();
     }
     return Container();

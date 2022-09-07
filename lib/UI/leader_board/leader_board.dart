@@ -28,6 +28,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
   int selectedIndex = 0;
   String currentValue = 'Southwind';
   bool loading = true;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -42,254 +43,344 @@ class _LeaderBoardState extends State<LeaderBoard> {
     });
   }
 
+  List<String> items = ["aaaa", "bbbb"];
+  String dropDownValue = "aaaa";
+
   @override
   Widget build(BuildContext context) {
     final _leaderBoardProvider = useProvider(leaderBoardNotifierProvider);
     final size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     "LEADERBOARD",
-      //     style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1),
-      //   ),
-      //   actions: [
-      //     Container(margin: EdgeInsets.only(right: 15), child: Icon(Icons.menu))
-      //   ],
-      // ),
-      body: !_leaderBoardProvider.isDataSet
-          ? Center(
-              child: Text('No Data Available'),
-            )
-          : loading
-              ? LoadingWidget()
-              : Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 18),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: primarySwatch[900]!),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 2),
-                          child: DropdownButton<String>(
-                            isExpanded: true,
-                            underline: Container(),
-                            items: _leaderBoardProvider.teamList
-                                .map((e) => DropdownMenuItem(
-                                      child: Text(e.toString()),
-                                      value: e,
-                                    ))
-                                .toList(),
-                            value: currentValue,
-                            onChanged: (v) {
-                              currentValue = v!;
-                              teamIndex = _leaderBoardProvider.teamList
-                                  .indexOf(currentValue);
-                              setState(() {});
-                            },
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(children: [
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Container(
+                  // width: size.width / 2.2,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: primarySwatch[900]!),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                    child: DropdownButton<String>(
+                      borderRadius: BorderRadius.circular(10), isExpanded: true,
+                      underline: Container(),
+                      hint: currentValue == "Southwind"
+                          ? Text(
+                              "Southwind",
+                              style: TextStyle(color: primarySwatch),
+                            )
+                          : Text(currentValue,
+                              style: TextStyle(color: primarySwatch)),
+                      items: items.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items,
+                              style: TextStyle(color: primarySwatch)),
+                        );
+                      }).toList(),
+                      //  value: currentValue,
+                      onChanged: (v) {
+                        currentValue = v!;
+                        loading = true;
+                        loadData();
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Container(
+                  // width: size.width / 2.5,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: primarySwatch[900]!),
+                      borderRadius: BorderRadius.circular(10)),
+
+                  // decoration: BoxDecoration(
+                  //     border: Border.all(color: primarySwatch[900]!),
+                  //     borderRadius: BorderRadius.circular(10)),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 12),
+                    child: InkWell(
+                      onTap: () {
+                        // _selectDate(context);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Text(DateToMMDDYYYY(selectedDate)),
+                          Icon(
+                            Icons.calendar_today,
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                    // ExpansionTile(
-                    //   onExpansionChanged: (v) {
-                    //     setState(() {});
-                    //   },
-                    //   title: Text(
-                    //     "revenue".toUpperCase(),
-                    //     style: TextStyle(
-                    //       fontWeight: FontWeight.bold,
-                    //       letterSpacing: 1,
-                    //     ),
-                    //   ),
-                    //   children: [
-                    //     RadioListTile(
-                    //       value: 1,
-                    //       groupValue: value,
-                    //       onChanged: (val) {
-                    //         setState(
-                    //           () {
-                    //             value != val;
-                    //           },
-                    //         );
-                    //       },
-                    //       title: Text("Male"),
-                    //     ),
-                    //     RadioListTile(
-                    //       value: 2,
-                    //       groupValue: value,
-                    //       onChanged: (val) {
-                    //         setState(
-                    //           () {
-                    //             value != val;
-                    //           },
-                    //         );
-                    //       },
-                    //       title: Text("Female"),
-                    //     ),
-                    //   ],
-                    // ),
-                    Expanded(
-                      child: _leaderBoardProvider.isDataSet == false
-                          ? LoadingWidget()
-                          : Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      for (int i = 0; i < tabs.length; i++)
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 4, vertical: 10),
-                                            child: InkWell(
-                                              borderRadius:
-                                                  BorderRadius.circular(1000),
-                                              onTap: () {
-                                                setState(() {
-                                                  selectedIndex = i;
-                                                  showsecondpop =
-                                                      !showsecondpop;
-                                                });
-                                              },
-                                              child: Material(
-                                                color: Colors.transparent,
-                                                elevation:
-                                                    selectedIndex == i ? 10 : 0,
-                                                borderRadius:
-                                                    BorderRadius.circular(1000),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: selectedIndex == i
-                                                          ? primarySwatch[700]
-                                                          : Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      border: Border.all(
-                                                          color: primarySwatch[
-                                                              900]!,
-                                                          width: .5)),
-                                                  child: Center(
-                                                      child: Padding(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        vertical: 10,
-                                                        horizontal: 10),
-                                                    child: Text(
-                                                      tabs[i],
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.visible,
-                                                      style: selectedIndex != i
-                                                          ? TextStyle(
-                                                              color:
-                                                                  primarySwatch[
-                                                                      900],
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold)
-                                                          : TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                    ),
-                                                  )),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                  // if (selectedIndex == 0)
-                                  if (selectedIndex == 0)
-                                    Expanded(
-                                      child: ListView.builder(
-                                          itemCount: _leaderBoardProvider
-                                              .teamLeaderBoard[teamIndex]
-                                              .revenue!
-                                              .length,
-                                          itemBuilder: (context, index) {
-                                            return LeaderBoardCard(
-                                              index: index,
-                                              leaderDetail: _leaderBoardProvider
-                                                  .teamLeaderBoard[teamIndex]
-                                                  .revenue![index],
-                                            );
-                                          }),
-                                    ),
-                                  if (selectedIndex == 1)
-                                    Expanded(
-                                      child: ListView.builder(
-                                          itemCount: _leaderBoardProvider
-                                              .teamLeaderBoard[teamIndex]
-                                              .ajs!
-                                              .length,
-                                          itemBuilder: (context, index) {
-                                            return LeaderBoardCard(
-                                              index: index,
-                                              leaderDetail: _leaderBoardProvider
-                                                  .teamLeaderBoard[teamIndex]
-                                                  .ajs![index],
-                                            );
-                                          }),
-                                    ),
-                                  if (selectedIndex == 2)
-                                    Expanded(
-                                      child: ListView.builder(
-                                          itemCount: _leaderBoardProvider
-                                              .teamLeaderBoard[teamIndex]
-                                              .revenuePerHour!
-                                              .length,
-                                          itemBuilder: (context, index) {
-                                            return LeaderBoardCard(
-                                              index: index,
-                                              leaderDetail: _leaderBoardProvider
-                                                  .teamLeaderBoard[teamIndex]
-                                                  .revenuePerHour![index],
-                                            );
-                                          }),
-                                    ),
-                                  if (selectedIndex == 3)
-                                    Expanded(
-                                      child: ListView.builder(
-                                          itemCount: _leaderBoardProvider
-                                              .teamLeaderBoard[teamIndex]
-                                              .nps!
-                                              .length,
-                                          itemBuilder: (context, index) {
-                                            return LeaderBoardCard(
-                                              index: index,
-                                              leaderDetail: _leaderBoardProvider
-                                                  .teamLeaderBoard[teamIndex]
-                                                  .nps![index],
-                                            );
-                                          }),
-                                    )
-
-                                  //   ),
-                                ],
-                              ),
-                            ),
-                    ),
-                  ],
+                  ),
                 ),
+              ),
+            ],
+          ),
+        ]),
+      ),
     ));
+    // return SafeArea(
+    //     child: Scaffold(
+    //   // appBar: AppBar(
+    //   //   title: Text(
+    //   //     "LEADERBOARD",
+    //   //     style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1),
+    //   //   ),
+    //   //   actions: [
+    //   //     Container(margin: EdgeInsets.only(right: 15), child: Icon(Icons.menu))
+    //   //   ],
+    //   // ),
+    //   body: !_leaderBoardProvider.isDataSet
+    //       ? Center(
+    //           child: Text('No Data Available'),
+    //         )
+    //       : loading
+    //           ? LoadingWidget()
+    //           : Column(
+    //               children: [
+    //                 Padding(
+    //                   padding: const EdgeInsets.symmetric(
+    //                       vertical: 10, horizontal: 18),
+    //                   child: Container(
+    //                     decoration: BoxDecoration(
+    //                         border: Border.all(color: primarySwatch[900]!),
+    //                         borderRadius: BorderRadius.circular(10)),
+    //                     child: Padding(
+    //                       padding: const EdgeInsets.symmetric(
+    //                           horizontal: 10, vertical: 2),
+    //                       child: DropdownButton<String>(
+    //                         isExpanded: true,
+    //                         underline: Container(),
+    //                         items: _leaderBoardProvider.teamList
+    //                             .map((e) => DropdownMenuItem(
+    //                                   child: Text(e.toString()),
+    //                                   value: e,
+    //                                 ))
+    //                             .toList(),
+    //                         value: currentValue,
+    //                         onChanged: (v) {
+    //                           currentValue = v!;
+    //                           teamIndex = _leaderBoardProvider.teamList
+    //                               .indexOf(currentValue);
+    //                           setState(() {});
+    //                         },
+    //                       ),
+    //                     ),
+    //                   ),
+    //                 ),
+    //                 // ExpansionTile(
+    //                 //   onExpansionChanged: (v) {
+    //                 //     setState(() {});
+    //                 //   },
+    //                 //   title: Text(
+    //                 //     "revenue".toUpperCase(),
+    //                 //     style: TextStyle(
+    //                 //       fontWeight: FontWeight.bold,
+    //                 //       letterSpacing: 1,
+    //                 //     ),
+    //                 //   ),
+    //                 //   children: [
+    //                 //     RadioListTile(
+    //                 //       value: 1,
+    //                 //       groupValue: value,
+    //                 //       onChanged: (val) {
+    //                 //         setState(
+    //                 //           () {
+    //                 //             value != val;
+    //                 //           },
+    //                 //         );
+    //                 //       },
+    //                 //       title: Text("Male"),
+    //                 //     ),
+    //                 //     RadioListTile(
+    //                 //       value: 2,
+    //                 //       groupValue: value,
+    //                 //       onChanged: (val) {
+    //                 //         setState(
+    //                 //           () {
+    //                 //             value != val;
+    //                 //           },
+    //                 //         );
+    //                 //       },
+    //                 //       title: Text("Female"),
+    //                 //     ),
+    //                 //   ],
+    //                 // ),
+    //                 Expanded(
+    //                   child: _leaderBoardProvider.isDataSet == false
+    //                       ? LoadingWidget()
+    //                       : Padding(
+    //                           padding:
+    //                               const EdgeInsets.symmetric(horizontal: 10),
+    //                           child: Column(
+    //                             children: [
+    //                               Row(
+    //                                 children: [
+    //                                   for (int i = 0; i < tabs.length; i++)
+    //                                     Expanded(
+    //                                       child: Padding(
+    //                                         padding: const EdgeInsets.symmetric(
+    //                                             horizontal: 4, vertical: 10),
+    //                                         child: InkWell(
+    //                                           borderRadius:
+    //                                               BorderRadius.circular(1000),
+    //                                           onTap: () {
+    //                                             setState(() {
+    //                                               selectedIndex = i;
+    //                                               showsecondpop =
+    //                                                   !showsecondpop;
+    //                                             });
+    //                                           },
+    //                                           child: Material(
+    //                                             color: Colors.transparent,
+    //                                             elevation:
+    //                                                 selectedIndex == i ? 10 : 0,
+    //                                             borderRadius:
+    //                                                 BorderRadius.circular(1000),
+    //                                             child: Container(
+    //                                               decoration: BoxDecoration(
+    //                                                   color: selectedIndex == i
+    //                                                       ? primarySwatch[700]
+    //                                                       : Colors.white,
+    //                                                   borderRadius:
+    //                                                       BorderRadius.circular(
+    //                                                           10),
+    //                                                   border: Border.all(
+    //                                                       color: primarySwatch[
+    //                                                           900]!,
+    //                                                       width: .5)),
+    //                                               child: Center(
+    //                                                   child: Padding(
+    //                                                 padding: const EdgeInsets
+    //                                                         .symmetric(
+    //                                                     vertical: 10,
+    //                                                     horizontal: 10),
+    //                                                 child: Text(
+    //                                                   tabs[i],
+    //                                                   maxLines: 1,
+    //                                                   overflow:
+    //                                                       TextOverflow.visible,
+    //                                                   style: selectedIndex != i
+    //                                                       ? TextStyle(
+    //                                                           color:
+    //                                                               primarySwatch[
+    //                                                                   900],
+    //                                                           fontWeight:
+    //                                                               FontWeight
+    //                                                                   .bold)
+    //                                                       : TextStyle(
+    //                                                           color:
+    //                                                               Colors.white,
+    //                                                           fontWeight:
+    //                                                               FontWeight
+    //                                                                   .bold),
+    //                                                 ),
+    //                                               )),
+    //                                             ),
+    //                                           ),
+    //                                         ),
+    //                                       ),
+    //                                     ),
+    //                                 ],
+    //                               ),
+    //                               // if (selectedIndex == 0)
+    //                               if (selectedIndex == 0)
+    //                                 Expanded(
+    //                                   child: ListView.builder(
+    //                                       itemCount: _leaderBoardProvider
+    //                                           .teamLeaderBoard[teamIndex]
+    //                                           .revenue!
+    //                                           .length,
+    //                                       itemBuilder: (context, index) {
+    //                                         return LeaderBoardCard(
+    //                                           index: index,
+    //                                           leaderDetail: _leaderBoardProvider
+    //                                               .teamLeaderBoard[teamIndex]
+    //                                               .revenue![index],
+    //                                         );
+    //                                       }),
+    //                                 ),
+    //                               if (selectedIndex == 1)
+    //                                 Expanded(
+    //                                   child: ListView.builder(
+    //                                       itemCount: _leaderBoardProvider
+    //                                           .teamLeaderBoard[teamIndex]
+    //                                           .ajs!
+    //                                           .length,
+    //                                       itemBuilder: (context, index) {
+    //                                         return LeaderBoardCard(
+    //                                           index: index,
+    //                                           leaderDetail: _leaderBoardProvider
+    //                                               .teamLeaderBoard[teamIndex]
+    //                                               .ajs![index],
+    //                                         );
+    //                                       }),
+    //                                 ),
+    //                               if (selectedIndex == 2)
+    //                                 Expanded(
+    //                                   child: ListView.builder(
+    //                                       itemCount: _leaderBoardProvider
+    //                                           .teamLeaderBoard[teamIndex]
+    //                                           .revenuePerHour!
+    //                                           .length,
+    //                                       itemBuilder: (context, index) {
+    //                                         return LeaderBoardCard(
+    //                                           index: index,
+    //                                           leaderDetail: _leaderBoardProvider
+    //                                               .teamLeaderBoard[teamIndex]
+    //                                               .revenuePerHour![index],
+    //                                         );
+    //                                       }),
+    //                                 ),
+    //                               if (selectedIndex == 3)
+    //                                 Expanded(
+    //                                   child: ListView.builder(
+    //                                       itemCount: _leaderBoardProvider
+    //                                           .teamLeaderBoard[teamIndex]
+    //                                           .nps!
+    //                                           .length,
+    //                                       itemBuilder: (context, index) {
+    //                                         return LeaderBoardCard(
+    //                                           index: index,
+    //                                           leaderDetail: _leaderBoardProvider
+    //                                               .teamLeaderBoard[teamIndex]
+    //                                               .nps![index],
+    //                                         );
+    //                                       }),
+    //                                 )
+    //
+    //                               //   ),
+    //                             ],
+    //                           ),
+    //                         ),
+    //                 ),
+    //               ],
+    //             ),
+    // ));
   }
 }
 
 class LeaderBoardCard extends StatelessWidget {
   LeaderDetail leaderDetail;
   int index;
+
   LeaderBoardCard({required this.leaderDetail, required this.index});
 
   @override

@@ -75,6 +75,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
   var type;
 
   late String title;
+
   @override
   void initState() {
     title = "Avodah";
@@ -117,64 +118,64 @@ class _CustomDrawerState extends State<CustomDrawer> {
   Widget build(BuildContext context) {
     print('currentBottomBarIndex = ${currentBottomBarIndex}');
     return Scaffold(
-        floatingActionButton: drawerIndex == DrawerIndex.Jobs
-            ? FloatingActionButton(
-                backgroundColor: primarySwatch[700],
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (c) => AddJob()));
-                },
-                child: Icon(Icons.add),
-              )
-            : Container(),
-        resizeToAvoidBottomInset: true,
-        //  appBar: AppBar(
-        //   title: Text(
-        //     "Southwind".toUpper_Case(),
-        //     style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
-        //   ),
-        //   leading: Icon(Icons.menu),
-        //   centerTitle: true,
-        // ),
-        body:
-        //  UpgradeAlert(
-        //   upgrader: Upgrader(
-        //     showReleaseNotes: false,
-        //     minAppVersion: '0.0.0',
-        //     dialogStyle: Platform.isAndroid
-        //         ? UpgradeDialogStyle.material
-        //         : UpgradeDialogStyle.cupertino,
-        //     durationUntilAlertAgain: Duration(seconds: 3),
-        //     onUpdate: () => Platform.isAndroid ? onAndroid() : onIOS(),
-        //     showLater: false,
-        //     showIgnore: false,
-        //     messages: MyEnglishMessages(),
-        //   ),
-        //   child: 
-        SafeArea(
-            child: DrawerUserController(
-              currentBottomBarIndex: currentBottomBarIndex,
-              screenIndex: drawerIndex,
-              drawerWidth: MediaQuery.of(context).size.width * 0.75,
-              onDrawerCall: (DrawerIndex drawerIndexdata) {
-                changeIndex(drawerIndexdata);
-                //callback from drawer for replace screen as user need with passing DrawerIndex(Enum index)
+      floatingActionButton: drawerIndex == DrawerIndex.Jobs
+          ? FloatingActionButton(
+              backgroundColor: primarySwatch[700],
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (c) => AddJob()));
               },
-              // screenView: TimeCardScreen(),
-              screenView: ScreenWidget,
-              // screenView: HomeScreen(
-              // onindexChange: (i) {
-              //   currentBottomBarIndex = i;
-              //   setState(() {});
-              // },
-              // ),
-              drawerIsOpen: (bool) {},
-              //we replace screen view as we need on navigate starting screens like MyHomePage, HelpScreen, FeedbackScreen, etc...
-            ),
-          ),
+              child: Icon(Icons.add),
+            )
+          : Container(),
+      resizeToAvoidBottomInset: true,
+      //  appBar: AppBar(
+      //   title: Text(
+      //     "Southwind".toUpper_Case(),
+      //     style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+      //   ),
+      //   leading: Icon(Icons.menu),
+      //   centerTitle: true,
+      // ),
+      body:
+          //  UpgradeAlert(
+          //   upgrader: Upgrader(
+          //     showReleaseNotes: false,
+          //     minAppVersion: '0.0.0',
+          //     dialogStyle: Platform.isAndroid
+          //         ? UpgradeDialogStyle.material
+          //         : UpgradeDialogStyle.cupertino,
+          //     durationUntilAlertAgain: Duration(seconds: 3),
+          //     onUpdate: () => Platform.isAndroid ? onAndroid() : onIOS(),
+          //     showLater: false,
+          //     showIgnore: false,
+          //     messages: MyEnglishMessages(),
+          //   ),
+          //   child:
+          SafeArea(
+        child: DrawerUserController(
+          currentBottomBarIndex: currentBottomBarIndex,
+          screenIndex: drawerIndex,
+          drawerWidth: MediaQuery.of(context).size.width * 0.75,
+          onDrawerCall: (DrawerIndex drawerIndexdata) {
+            changeIndex(drawerIndexdata);
+            //callback from drawer for replace screen as user need with passing DrawerIndex(Enum index)
+          },
+          // screenView: TimeCardScreen(),
+          screenView: ScreenWidget,
+          // screenView: HomeScreen(
+          // onindexChange: (i) {
+          //   currentBottomBarIndex = i;
+          //   setState(() {});
+          // },
           // ),
-          // This trailing comma makes auto-formatting nicer for build methods.
-        );
+          drawerIsOpen: (bool) {},
+          //we replace screen view as we need on navigate starting screens like MyHomePage, HelpScreen, FeedbackScreen, etc...
+        ),
+      ),
+      // ),
+      // This trailing comma makes auto-formatting nicer for build methods.
+    );
   }
 
   onIOS() {
@@ -220,9 +221,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
             setState(() {});
           },
         );
-
-      case DrawerIndex.LeaderBoard:
-        return LeaderBoard();
+//commented
+      // case DrawerIndex.LeaderBoard:
+      //   return LeaderBoard();
       // return HomeScreen(
       //   onindexChange: (i) {
       //     currentBottomBarIndex = i;
@@ -232,9 +233,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
       // case DrawerIndex.Incentives:
       //   return Incentives();
-      case DrawerIndex.Library:
-        return Library();
-        break;
+      // case DrawerIndex.Library:
+      //   return Library();
+      //   break;
       case DrawerIndex.Surveys:
         return Surveys_Tab();
         break;

@@ -4,15 +4,22 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:southwind/Models/team/team.dart';
 import 'package:southwind/Models/user_data.dart';
 import 'package:southwind/constant/Global.dart';
 import 'package:southwind/data/providers/base_notifer.dart';
+import 'package:southwind/utils/File_Picker.dart';
+import 'package:southwind/utils/cloudinaryclient/cloudinary_client.dart';
 import 'package:southwind/utils/helpers.dart';
 import 'package:southwind/utils/utilsContstant.dart';
 
+import '../../utils/cloudinaryclient/models/CloudinaryResponse.dart';
+
 class AuthNotifier extends BaseNotifier {
+  CloudinaryClient cloudinaryClient = CloudinaryClient();
+  File_Picker file_picker = File_Picker();
   bool isLogedIn = false;
   UserData? userData;
   // TeamData? teamData;
@@ -34,7 +41,33 @@ class AuthNotifier extends BaseNotifier {
     }
   }
 
-  login(String email, password,bool keepMeLoggedIn) async {
+  Future imageUpload(
+    ImageSource source,
+    String id,
+  ) async {
+    String file = await file_picker.pickImage(source);
+
+    CloudinaryResponse cloudinaryres = await cloudinaryClient.uploadImage(file,
+        filename: "southDemoId", folder: 'Southwind');
+    await uploadMedia(id, cloudinaryres.url!);
+  }
+
+  Future uploadMedia(
+    String id,
+    String url,
+  ) async {
+    final res = await dioClient.postWithFormData(apiEnd: api_setProfile, data: {
+      "user_name": id,
+      // 'comment': "--",
+      'user_image': url,
+      // 'media_type': media,
+    });
+    intialize();
+    // loadComments();
+    print('res,,,' + res.toString());
+  }
+
+  login(String email, password, bool keepMeLoggedIn) async {
     String? token = await firebaseMessaging.getToken();
     Utils.setBool(key_keep_me_logged_in, keepMeLoggedIn);
     final response =

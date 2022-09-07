@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:southwind/Models/LeaderBoard/AllLeaderBoard.dart';
 import 'package:southwind/Models/team/team.dart';
@@ -26,19 +28,37 @@ class LeaderBoardProvider extends BaseNotifier {
       'notification_type': 'team_list',
       'is_admin': userData!.isAdmin
     });
-    
-      if(teamRes.statusCode!=200){
-        teamData = TeamData.fromJson(teamRes.data['teamlist_details']);
-    if (teamData!.primaryTeamList!.primaryTeamName != null) {
-      teamList.add(teamData!.primaryTeamList!.primaryTeamName!.toString());
-    }
-    await getAllLeaderBoardData();
-    await getTeamLeaderBoard();
-    isDataSet = true;
+
+    if (teamRes.statusCode != 200) {
+      teamData = TeamData.fromJson(teamRes.data['teamlist_details']);
+      if (teamData!.primaryTeamList!.primaryTeamName != null) {
+        teamList.add(teamData!.primaryTeamList!.primaryTeamName!.toString());
       }
-    
+      await getAllLeaderBoardData();
+      await getTeamLeaderBoard();
+      isDataSet = true;
+    }
+
     // notifyListeners();
   }
+
+  // Future loadAdditionalTeam() async {
+  //   final response = await dioClient.getRequest(apiEnd: api_addteamlist);
+  //   if (response is Response) {
+  //     if (response.statusCode == 200) {
+  //       additionalTeam = (response.data["teams"] as List)
+  //           .map((e) => AllTeam.fromJson(e))
+  //           .toList();
+  //
+  //       // for (int index = 0; index < additionalTeam.length; index++) {
+  //       //   teamList.add(additionalTeam[index].teamName);
+  //       //   teamListid.add(additionalTeam[index].id);
+  //       // }
+  //       log('kahskjabdkjb' + additionalTeam.toString());
+  //     }
+  //     notifyListeners();
+  //   }
+  // }
 
   Future getAllLeaderBoardData() async {
     // allLeaderBoard =

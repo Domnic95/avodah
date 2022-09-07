@@ -51,7 +51,7 @@ class DrawerUserController extends StatefulWidget {
 }
 
 class _DrawerUserControllerState extends State<DrawerUserController>
-  with TickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late ScrollController scrollController;
   late AnimationController iconAnimationController;
   late AnimationController animationController;
@@ -208,7 +208,8 @@ class _DrawerUserControllerState extends State<DrawerUserController>
                           title: Container(
                             // color: Colors.teal,
                             height: 30,
-                            child: Image.asset("assets/images/southwind_logo.png"),
+                            child:
+                                Image.asset("assets/images/southwind_logo.png"),
                           ),
                           centerTitle: true,
                           // actions: [
@@ -436,11 +437,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
         labelName: 'Home',
         icon: Icon(Icons.home_outlined),
       ),
-      DrawerList(
-        index: DrawerIndex.LeaderBoard,
-        labelName: 'Leaderboard',
-        icon: Icon(Icons.leaderboard_outlined),
-      ),
+      // DrawerList(
+      //   index: DrawerIndex.LeaderBoard,
+      //   labelName: 'Leaderboard',
+      //   icon: Icon(Icons.leaderboard_outlined),
+      // ),
       /*DrawerList(
         index: DrawerIndex.Payment,
         labelName: 'Payment',
@@ -451,11 +452,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
       //   labelName: 'Incentives',
       //   icon: Icon(Icons.paid_outlined),
       // ),
-      DrawerList(
-        index: DrawerIndex.Library,
-        labelName: 'Library',
-        icon: Icon(Icons.local_library_outlined),
-      ),
+      // DrawerList(
+      //   index: DrawerIndex.Library,
+      //   labelName: 'Library',
+      //   icon: Icon(Icons.local_library_outlined),
+      // ),
       /* DrawerList(
         index: DrawerIndex.Passbook,
         labelName: 'Passbook',

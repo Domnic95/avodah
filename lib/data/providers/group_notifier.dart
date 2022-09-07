@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -40,6 +41,7 @@ class GroupNotifier extends BaseNotifier {
   Future getAllGroup() async {
     listGroup = [];
     final res = await dioClient.postWithFormData(apiEnd: api_group_list);
+
     listGroup =
         List<Group>.from(res.data['groupsList'].map((e) => Group.fromJson(e)));
 

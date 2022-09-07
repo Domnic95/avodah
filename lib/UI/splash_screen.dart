@@ -49,11 +49,14 @@ class _SplashScrrenState extends State<SplashScrren> {
         ? AuthWrapper()
         : Scaffold(
             body: Center(
-              child: Image.asset(
-                'assets/images/splash.png',
-                height: size.height,
-                width: size.width,
-                fit: BoxFit.cover,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Image.asset(
+                  'assets/images/southwind_logo.png',
+                  // height: size.height,
+                  // width: size.width,
+                  // fit: BoxFit.cover,
+                ),
               ),
             ),
           );

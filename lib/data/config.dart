@@ -1,5 +1,5 @@
 // const BASE_URL = "http://172.105.24.23/api";
-const BASE_URL = "https://mflip.com/api";
+const BASE_URL = "https://avodahtransport.com/api";
 //const BASE_URL = "http://southwind.app/";
 //////////// api End////////////////
 /// AUTH ///
@@ -18,7 +18,7 @@ const api_getNews = "/get_comm_notification";
 const api_communication_get_notification = "/communication-notification/list";
 const api_communication_like = "/communication-notification/like";
 const api_communication_unlike = '/communication-notification/unlike';
-const   api_communication_comment = '/communication-notification/comment-add';
+const api_communication_comment = '/communication-notification/comment-add';
 
 const apiCommentList = "/communication-notification/comments";
 // const api_communcation_unlike = ""
@@ -62,6 +62,7 @@ const api_getGroup_participates = '/get_group_members';
 const api_sendMessage = '/set_group_msgs';
 // jobs
 const api_addPost = '/jobs/add';
+const api_setProfile = '/set_profile_image';
 const int offsetDifference = 20;
 const api_teamMember = "/team_members";
 const api_todaysJob = "/jobs";

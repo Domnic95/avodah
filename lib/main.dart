@@ -7,6 +7,7 @@ import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:southwind/UI/profile/profile_tab.dart';
 import 'package:southwind/UI/theme/apptheme.dart';
 import 'package:southwind/constant/Global.dart';
 import 'package:southwind/routes/routes.dart';
@@ -20,7 +21,7 @@ void main() async {
       await Firebase.initializeApp();
       WidgetsFlutterBinding.ensureInitialized();
       sharedPreferences = await SharedPreferences.getInstance();
-      if(!(Utils.getBool(key_keep_me_logged_in) ?? false)){
+      if (!(Utils.getBool(key_keep_me_logged_in) ?? false)) {
         Utils.removePref();
       }
       FlutterAppBadger.removeBadge();

@@ -10,6 +10,8 @@ import 'package:southwind/data/providers/providers.dart';
 import 'package:southwind/routes/routes.dart';
 import 'package:southwind/UI/theme/apptheme.dart';
 
+import '../../data/providers/survey_provider.dart';
+
 class Surveys_Tab extends StatefulHookWidget {
   @override
   _Surveys_TabState createState() => _Surveys_TabState();
@@ -23,7 +25,7 @@ class _Surveys_TabState extends State<Surveys_Tab> {
   @override
   void initState() {
     // TODO: implement initState
-   controller = ScrollController()..addListener(_scrollListener);
+    controller = ScrollController()..addListener(_scrollListener);
     loadData();
   }
 
@@ -33,24 +35,24 @@ class _Surveys_TabState extends State<Surveys_Tab> {
       loading = false;
     });
   }
-@override
+
+  @override
   void dispose() {
     controller.removeListener(_scrollListener);
     super.dispose();
   }
- 
-void _scrollListener() async{
-   if( context.read(surveyNotifierProvider).lazyLoading){
 
-   
-    if (controller.position.extentAfter < 500) {
-         await context.read(surveyNotifierProvider).lazyData();
-      // setState(() {
-      //   // items.addAll(List.generate(42, (index) => 'Inserted $index'));
-      // });
-    }
+  void _scrollListener() async {
+    if (context.read(surveyNotifierProvider).lazyLoading) {
+      if (controller.position.extentAfter < 500) {
+        await context.read(surveyNotifierProvider).lazyData();
+        // setState(() {
+        //   // items.addAll(List.generate(42, (index) => 'Inserted $index'));
+        // });
+      }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     final _surveyNotifierProvider = useProvider(surveyNotifierProvider);
@@ -134,7 +136,6 @@ void _scrollListener() async{
                       //       : _surveyNotifierProvider.submittedSurvey,
                       // )
 
-                      
                       // Expanded(
                       //   child: SurveyCategory(
                       //             title: selectedIndex == 0
@@ -144,28 +145,27 @@ void _scrollListener() async{
                       //                 ? _surveyNotifierProvider.newSurvey
                       //                 : _surveyNotifierProvider.submittedSurvey,
                       //           ),
-                        Expanded(
-                          child: FutureBuilder(
-                              future: _surveyNotifierProvider.reload(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.done) {
-                                  return SurveyCategory(
-                                    title: selectedIndex == 0
-                                        ? "Interesting"
-                                        : "Submitted",
-                                    data: selectedIndex == 0
-                                        ? _surveyNotifierProvider.newSurvey
-                                        : _surveyNotifierProvider.submittedSurvey,
-                                  );
-                                } else {
-                                  return Center(
-                                    child: LoadingWidget(),
-                                  );
-                                }
-                              }),
-                        ),
-                    
+                      Expanded(
+                        child: FutureBuilder(
+                            future: _surveyNotifierProvider.reload(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.done) {
+                                return SurveyCategory(
+                                  title: selectedIndex == 0
+                                      ? "Interesting"
+                                      : "Submitted",
+                                  data: selectedIndex == 0
+                                      ? _surveyNotifierProvider.newSurvey
+                                      : _surveyNotifierProvider.submittedSurvey,
+                                );
+                              } else {
+                                return Center(
+                                  child: LoadingWidget(),
+                                );
+                              }
+                            }),
+                      ),
                     ],
                   ),
                 )
@@ -241,7 +241,7 @@ class SingleCollection extends HookWidget {
         padding: const EdgeInsets.symmetric(vertical: 4),
         child: InkWell(
           onTap: () async {
-             await surveyProvider.setSurveyId(collection.id!);
+            await surveyProvider.setSurveyId(collection.id!);
             // await surveyProvider.setSurvey(collection);
             // Navigator.push(context, MaterialPageRoute(builder: (_)=>Questions_Tab()));
             Navigator.pushNamed(context, Routes.question_tab);
