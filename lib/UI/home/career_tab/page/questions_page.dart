@@ -33,7 +33,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       CareerAchievement achievement =
           context.read(carerNotifierProvider).selectedAchievement;
       if ((achievement.attachmentUrl != null &&

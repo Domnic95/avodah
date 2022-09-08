@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:southwind/Models/library_model.dart';
@@ -26,7 +25,8 @@ class _LibraryResourceState extends State<LibraryResource> {
   late LibraryMediaType libraryMediaType;
   void initState() {
     super.initState();
-    if (widget.libraryModel.resourceVideoLink != "") {
+    if (widget.libraryModel.resourceVideoLink != "" &&
+        widget.libraryModel.resourceVideoLink != null) {
       libraryMediaType = LibraryMediaType.youtube;
       //     String youtubeUrl =widget.libraryModel.resourceVideoLink !.toString();
       //     int lastPoss = youtubeUrl.lastIndexOf('/');

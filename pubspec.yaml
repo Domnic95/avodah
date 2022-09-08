@@ -71,6 +71,8 @@ dependencies:
   geocoding: ^2.0.4
   geocode: ^1.0.1
   geocoder: ^0.2.1
+  internet_connection_checker: ^0.0.1+4
+  overlay_support: ^2.0.1
   # firebase_analytics: ^9.0.5
 dependency_overrides:
   firebase_messaging_platform_interface: 3.1.6

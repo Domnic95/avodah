@@ -89,9 +89,7 @@ class SummaryScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         SingleChart(
-                          per: (answeredQuestion * 100 / totalquestion)
-                              .round()
-                              .toDouble(),
+                          per: (answeredQuestion * 100 / totalquestion).round().toDouble(),
                         ),
                         const SizedBox(
                           width: 10,
@@ -102,24 +100,15 @@ class SummaryScreen extends StatelessWidget {
                           children: [
                             Text(
                               "Summary",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(fontSize: 20),
+                              style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 20),
                             ),
                             Text(
                               "Total Questions : $totalquestion",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(fontSize: 14),
+                              style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
                             ),
                             Text(
                               "Answered Questions : $answeredQuestion",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(fontSize: 14),
+                              style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
                             )
                           ],
                         )
@@ -133,10 +122,7 @@ class SummaryScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Text(
                 data,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText2!
-                    .copyWith(color: Colors.black),
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.black),
                 textAlign: TextAlign.justify,
               ),
             ),

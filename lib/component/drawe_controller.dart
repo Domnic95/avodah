@@ -14,7 +14,7 @@ enum DrawerIndex {
   // Payment,
   // Incentives,
   Library,
-  // Passbook,
+  Passbook,
   Surveys,
   // Challenges,
   // Learning,
@@ -452,16 +452,16 @@ class _HomeDrawerState extends State<HomeDrawer> {
       //   labelName: 'Incentives',
       //   icon: Icon(Icons.paid_outlined),
       // ),
+      DrawerList(
+        index: DrawerIndex.Library,
+        labelName: 'Library',
+        icon: Icon(Icons.local_library_outlined),
+      ),
       // DrawerList(
-      //   index: DrawerIndex.Library,
-      //   labelName: 'Library',
-      //   icon: Icon(Icons.local_library_outlined),
+      //   index: DrawerIndex.Passbook,
+      //   labelName: 'Passbook',
+      //   icon: Icon(CupertinoIcons.book),
       // ),
-      /* DrawerList(
-        index: DrawerIndex.Passbook,
-        labelName: 'Passbook',
-        icon: Icon(CupertinoIcons.book),
-      ),*/
       DrawerList(
         index: DrawerIndex.Surveys,
         labelName: 'Surveys',

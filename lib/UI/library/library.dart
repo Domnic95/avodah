@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -51,69 +53,98 @@ class _LibraryState extends State<Library> {
     final _libraryNotifier = useProvider(libraryNotifier);
 
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text(
-        //     "LIBRARY",
-        //     style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.5),
-        //   ),
-        //   actions: [
-        //     Icon(
-        //       Icons.menu_outlined,
-        //     ),
-        //     SizedBox(
-        //       width: 10,
-        //     ),
-        //   ],
-        // ),
-        body: isLoading
-            ? LoadingWidget()
-            : SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: typeList
-                        .map((e) => Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    _libraryNotifier.setFilter(e);
+      // appBar: AppBar(
+      //   title: Text(
+      //     "LIBRARY",
+      //     style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.5),
+      //   ),
+      //   actions: [
+      //     Icon(
+      //       Icons.menu_outlined,
+      //     ),
+      //     SizedBox(
+      //       width: 10,
+      //     ),
+      //   ],
+      // ),
+      body: isLoading
+          ? LoadingWidget()
+          :
+          //  ListView.builder(
+          //     itemCount: _libraryNotifier.libraries.length,
+          //     itemBuilder: (context, index) {
+          //       return Card(
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(8.0),
+          //         ),
+          //         shadowColor: primarySwatch.shade400,
+          //         child: Container(
+          //           padding: EdgeInsets.symmetric(horizontal: 8),
+          //           width: size.width,
+          //           decoration: BoxDecoration(
+          //               borderRadius: BorderRadius.circular(8),
+          //               border: Border.all(color: primaryColor, width: 0.3)),
+          //           child: Padding(
+          //               padding: const EdgeInsets.symmetric(
+          //                 vertical: 15,
+          //               ),
+          //               child: _libraryNotifier.libraries[index] != null
+          //                   ? Text(_libraryNotifier
+          //                       .libraries[index].profileSchedules![0].clientId
+          //                       .toString())
+          //                   : Text("data")),
+          //         ),
+          //       );
+          //     }),
+          SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: typeList
+                      .map((e) => Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: InkWell(
+                              onTap: () {
+                               
+                                setState(() {
+                                  _libraryNotifier.setFilter(
+                                      e);
 
-                                    Navigator.pushNamed(
-                                      context,
-                                      Routes.libraryFilter,
-                                    );
-                                  });
-                                },
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  shadowColor: primarySwatch.shade400,
-                                  child: Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8),
-                                    width: size.width,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                            color: primaryColor, width: 0.3)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 15,
-                                      ),
-                                      child: Text(e.toString()),
+                                  Navigator.pushNamed(
+                                    context,
+                                    Routes.libraryFilter,
+                                  );
+                                });
+                              },
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                shadowColor: primarySwatch.shade400,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 8),
+                                  width: size.width,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          color: primaryColor, width: 0.3)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 15,
                                     ),
+                                    child: Text(e.toString()),
                                   ),
                                 ),
                               ),
-                            ))
-                        .toList(),
-                  ),
+                            ),
+                          ))
+                      .toList(),
                 ),
-              ));
+              ),
+            ),
+    );
   }
 }
 

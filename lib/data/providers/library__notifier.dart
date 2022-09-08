@@ -1,5 +1,7 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:southwind/Models/library_model.dart';
@@ -25,7 +27,7 @@ class LibraryNotifier extends BaseNotifier {
     Response res =
         await dioClient.postWithFormData(apiEnd: api_libraryDataEnd, data: {
       "team_id": authNotifier.userData?.teamId,
-      'client_id': authNotifier.userData?.id,
+      // 'client_id': authNotifier.userData?.id,
     });
     if (res.data.containsKey('profile_schedules'))
       libraries = List<LibraryModel>.from(
@@ -50,7 +52,6 @@ class LibraryNotifier extends BaseNotifier {
 
   Future filteredlibraries() async {
     filteredLibraires = [];
-
     for (int i = 0; i < libraries.length; i++) {
       if (libraries[i]
           .cats![0]

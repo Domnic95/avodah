@@ -233,12 +233,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
       // case DrawerIndex.Incentives:
       //   return Incentives();
-      // case DrawerIndex.Library:
-      //   return Library();
-      //   break;
+      case DrawerIndex.Library:
+        return Library();
+        // break;
       case DrawerIndex.Surveys:
         return Surveys_Tab();
-        break;
+        // break;
       // case DrawerIndex.Challenges:
       //   // TODO: Handle this case.
       //   break;
@@ -257,6 +257,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
       // case DrawerIndex.Goals:
       //   // TODO: Handle this case.
       //   break;
+      case DrawerIndex.LeaderBoard:
+        // TODO: Handle this case.
+        break;
+      case DrawerIndex.Passbook:
+        // TODO: Handle this case.
+        break;
+      case DrawerIndex.Jobs:
+        // TODO: Handle this case.
+        break;
     }
     return HomeScreen(
       onindexChange: (i) {

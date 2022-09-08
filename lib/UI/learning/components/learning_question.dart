@@ -28,7 +28,7 @@ class _LearningQuestiontabState extends State<LearningQuestiontab> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       loadData();
     });
   }
@@ -110,9 +110,10 @@ class _LearningQuestiontabState extends State<LearningQuestiontab> {
                               child: Text(
                                 "Being Exceptional at Accountabilty",
                                 style: TextStyle(
-                                    color: primarySwatch[700],
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                  color: primarySwatch[700],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16
+                                ),
                                 maxLines: 2,
                               ),
                             ),
