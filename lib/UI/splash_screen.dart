@@ -80,9 +80,9 @@ class _SplashScrrenState extends State<SplashScrren> {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Image.asset(
                   'assets/images/southwind_logo.png',
-                  height: size.height,
-                  width: size.width,
-                  fit: BoxFit.cover,
+                  // height: size.height,
+                  // width: size.width,
+                  // fit: BoxFit.cover,
                 ),
               ),
             ),
